@@ -58,6 +58,8 @@ Options:
 
 This document contains the help content for the `my-program-display-name` command-line program.
 
+**Version:** `1.2.3`
+
 **Command Overview:**
 
 * [`my-program-display-name`↴](#my-program-display-name)
@@ -132,6 +134,8 @@ Options:
 # Command-Line Help for `my-program-display-name`
 
 This document contains the help content for the `my-program-display-name` command-line program.
+
+**Version:** `1.2.3`
 
 **Command Overview:**
 

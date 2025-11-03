@@ -159,6 +159,14 @@ fn write_help_markdown(
     ).unwrap();
 
     //----------------------------------
+    // Write the version if available
+    //----------------------------------
+
+    if let Some(version) = command.get_version() {
+        writeln!(buffer, "**Version:** `{}`\n", version).unwrap();
+    }
+
+    //----------------------------------
     // Write the table of contents
     //----------------------------------
 
