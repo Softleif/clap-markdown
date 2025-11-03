@@ -158,3 +158,54 @@ This program does things.
 "
     );
 }
+
+/// Test behavior for an app with a multi-line version string
+#[test]
+fn test_version_behavior_for_multi_line_version_string() {
+    let multi_line_version = "my-cli 1.2.3 (abc123def)\nmy-lib 2.0.0 (789xyz456)\ndependency 3.1.0 (fedcba987)";
+
+    let mut app = Command::new("my-cli")
+        .version(multi_line_version)
+        .about("A CLI tool with multiple component versions")
+        .arg(Arg::new("input").short('i'));
+    let () = app.build();
+
+    assert_eq!(
+        help_markdown_command_custom(
+            &app,
+            &MarkdownOptions::new().show_footer(false)
+        ),
+        "\
+# Command-Line Help for `my-cli`
+
+This document contains the help content for the `my-cli` command-line program.
+
+**Version:**
+
+```
+my-cli 1.2.3 (abc123def)
+my-lib 2.0.0 (789xyz456)
+dependency 3.1.0 (fedcba987)
+```
+
+**Command Overview:**
+
+* [`my-cli`↴](#my-cli)
+
+## `my-cli`
+
+A CLI tool with multiple component versions
+
+**Usage:** `my-cli [OPTIONS]`
+
+###### **Options:**
+
+* `-i <INPUT>`
+* `-h`, `--help` — Print help
+* `-V`, `--version` — Print version
+
+
+
+"
+    );
+}
